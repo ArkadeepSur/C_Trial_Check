@@ -80,7 +80,6 @@ void delete_book() {
 
 void main_menu() {
     int choice;
-    do {
         printf("\nLibrary Management System\n");
         printf("1. Add Book\n");
         printf("2. List Books\n");
@@ -96,7 +95,7 @@ void main_menu() {
         } 
         else {
           printf("Error opening input file.\n");
-          return 1;
+          return;
         }
 
         switch (choice) {
@@ -119,7 +118,6 @@ void main_menu() {
                 printf("Invalid choice. Please try again.\n");
         }
     }
-}
 
 int main() {
     main_menu();
