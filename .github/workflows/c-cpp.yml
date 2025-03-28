@@ -23,6 +23,10 @@ jobs:
 
     - name: Verify GCC installation
       run: gcc --version
+      
+    - name: Create input file
+      run: echo "1" > input.txt
+
 
     - name: Build
       run: make

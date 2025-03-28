@@ -88,7 +88,17 @@ void main_menu() {
         printf("4. Delete Book\n");
         printf("0. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+
+        FILE *file = fopen("input.txt", "r");
+        if (file) {
+          fscanf(file, "%d", &choice);
+          fclose(file);
+        } 
+        else {
+          printf("Error opening input file.\n");
+          return 1;
+        }
+
         switch (choice) {
             case 1:
                 add_book();
