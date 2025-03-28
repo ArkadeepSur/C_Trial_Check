@@ -118,7 +118,7 @@ void main_menu() {
             default:
                 printf("Invalid choice. Please try again.\n");
         }
-    } while (choice != 0);
+    }
 }
 
 int main() {
