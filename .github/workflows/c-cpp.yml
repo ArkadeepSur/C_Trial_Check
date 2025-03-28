@@ -1,21 +1,31 @@
-name: C/C++ CI
+name: Windows C Build
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up MinGW
+      run: |
+        choco install mingw
+        echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+    - name: Verify GCC installation
+      run: gcc --version
+
+    - name: Build
       run: make
-    - name: make check
-      run: make Makefile
+
+    - name: Run Executable
+      run: .\main.exe

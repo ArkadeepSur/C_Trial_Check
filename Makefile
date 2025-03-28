@@ -1,2 +1,11 @@
-bin_PROGRAMS = your_program_name
-your_program_name_SOURCES = main.c
+CC=gcc
+CFLAGS=-Wall
+TARGET=main.exe
+
+all: $(TARGET)
+
+$(TARGET): /main.c
+	$(CC) $(CFLAGS) -o $(TARGET) /main.c
+
+clean:
+	del $(TARGET)
